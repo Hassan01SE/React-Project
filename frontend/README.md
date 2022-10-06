@@ -1,3 +1,8 @@
+in your terminal run the following command after 'npm install'
+
+npx json-server --watch data/db.json --port 8000
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
