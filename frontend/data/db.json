@@ -1,0 +1,67 @@
+{
+  "products": [
+    {
+      "title": "Apples",
+      "body": "<p>some <strong>apples</strong> vel eligendi animi distinctio voluptatibus explicabo, ex nemo eius voluptates eveniet dolores? Rem aspernatur doloremque blanditiis! vel eligendi animi distinctio voluptatibus explicabo, ex nemo eius voluptates eveniet dolores? Rem aspernatur doloremque blanditiis!</p>",
+      "seller": "Masood",
+      "price": "15",
+      "quantity": "100",
+      "type": "kg",
+      "id": 1
+    },
+    {
+      "title": "Milk",
+      "body": "<p>Milk got no impurity vel eligendi animi distinctio voluptatibus explicabo, ex nemo eius voluptates eveniet dolores? Rem aspernatur doloremque blanditiis!vel eligendi animi distinctio voluptatibus explicabo, ex nemo eius voluptates eveniet dolores? Rem aspernatur doloremque blanditiis!</p>",
+      "seller": "Aneeq",
+      "price": "17",
+      "quantity": "35",
+      "type": "cartons",
+      "id": 2
+    },
+    {
+      "title": "Butter",
+      "body": "<h4>Quality stuff</h4><p>we don't compromise on the quality, you will <strong>love</strong> it</p>",
+      "seller": "Sabih Rehman",
+      "price": "8",
+      "quantity": "50",
+      "type": "pack",
+      "id": 4
+    },
+    {
+      "title": "Eggs",
+      "body": "<h2><strong>Best Eggs You can Get</strong></h2><h4><strong>Eggs from Kashmir</strong></h4><p>One egg has only <strong>75 calories but 7 grams of high-quality protein, 5 grams of fat, and 1.6 grams of saturated fat, along with iron, vitamins, minerals, and carotenoids</strong>. The egg is a powerhouse of disease-fighting nutrients like lutein and zeaxanthin.</p>",
+      "seller": "Waqar Gul",
+      "price": "3",
+      "quantity": "100",
+      "type": "dozen",
+      "id": 5
+    },
+    {
+      "title": "Tomatoes",
+      "body": "<h3><i>Organic Tomatoes</i></h3><p>&nbsp;</p><p><strong>Tomatoes also have a wealth of vitamin and mineral content, including:</strong></p><ul><li>18 mg of calcium.</li><li>427 mg of potassium.</li><li>43 mg of phosphorus.</li><li>24.7 mg of vitamin C.</li><li>1499 international units (IU) of vitamin A.</li></ul><p>&nbsp;</p>",
+      "seller": "Jamal",
+      "price": "9",
+      "quantity": "25",
+      "type": "kg",
+      "id": 6
+    },
+    {
+      "title": "Chicken",
+      "body": "<h2>Chicken&nbsp;</h2><p>has well-documented health benefits, but different parts and preparation methods factor into how healthy your chicken-based meal turns out. Darker cuts like the thigh and drumstick contain higher caloric content than lighter cuts like the breast. Keeping the skin or frying chicken will also add saturated fat.</p><p>If you’re switching out red meat for chicken, you’ll want to stick with chicken breast, as it’s the healthiest cut of the bird.</p><h2>&nbsp;</h2>",
+      "seller": "Rizwan",
+      "price": "18",
+      "quantity": "50",
+      "type": "kg",
+      "id": 11
+    },
+    {
+      "title": "Peanuts",
+      "body": "<p>selling <strong>high</strong> quality peanuts!</p><h3>Buy Now!</h3>",
+      "seller": "Mahad",
+      "price": "6",
+      "quantity": "300",
+      "type": "grams",
+      "id": 12
+    }
+  ]
+}
