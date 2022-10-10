@@ -14,7 +14,7 @@
   max-width: 600px;
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
-
+  flex: 200px 0 2;
   display: flex;
   align-items: center;
   position: -webkit-sticky;
@@ -41,10 +41,18 @@
   margin-left: 16px;
   text-decoration: none;
   padding: 6px;
+
 }
 
 .navbar a:hover {
   color: #D0EFB1;
+}
+
+@media (max-width:600px) {
+  .links {
+    display: flex;
+    flex-shrink: 2;
+  }
 }
 
 .App-content {
@@ -53,6 +61,9 @@
   padding: 20px;
 }
 
+.homepage {
+  margin-bottom: 60%;
+}
 
 .homepage h1 {
   color: #4D7298;

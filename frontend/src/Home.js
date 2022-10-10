@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import Products from './Products';
 
 
-const Home = () => {
+const Home = ({ name }) => {
 
     useEffect(() => {
         document.title = "Farm Products";
@@ -12,7 +12,7 @@ const Home = () => {
         <div className="homepage">
             <h1>All Products</h1>
 
-            <Products />
+            <Products name={name} />
 
         </div>
 

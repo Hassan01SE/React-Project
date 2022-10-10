@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useHistory } from "react-router-dom";
-
+import { useAuth } from "./auth";
+import { v4 as uuidv4 } from 'uuid';
 
 
 
@@ -19,10 +20,48 @@ const Create = () => {
     const [type, setType] = useState("")
     const [body, setText] = useState("")
     const history = useHistory();
+
+    const [user, setUser] = useState([""])
+    const [current, setCurrent] = useState([""])
+    const [uid, setuid] = useState()
+    /* const [pid, setproid] = useState() */
+
+    const auth = useAuth();
+    const name = auth.user;
+
+    useEffect(() => {
+        setTimeout(() => {
+            fetch('http://localhost:8000/user')
+                .then((res) => {
+
+                    return res.json();
+                })
+                .then((data) => {
+                    setUser(data);
+
+                    //socket.emit('send', data);
+                    const found = data.find((profile) => profile.name === name);
+                    setCurrent(found);
+                    setuid(found.id);
+
+
+                })
+
+
+
+        }, 100);
+
+
+    }, [])
+
+
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const product = { title, body, seller, price, quantity, type };
+        const pid = uuidv4();
+        const product = { title, body, seller, price, quantity, type, pid, uid };
 
         fetch('http://localhost:8000/products', {
             method: 'POST',
@@ -39,7 +78,7 @@ const Create = () => {
                 setText("");
                 setPrice(0);
                 setQuantity(0);
-                history.push('/');
+                history.push('/home');
 
             })
 
@@ -61,6 +100,12 @@ const Create = () => {
                         }} /></label>
 
                     <br />
+                    {/* <label>Product ID <br /><br /> <input type="number" min={pid} required placeholder="Enter Product ID!" value={pid}
+                        onChange={(e) => {
+                            setproid(e.target.value);
+                        }} /></label>
+
+                    <br /> */}
                     <label>Seller <br /> <br /> <input type="text" name='' required placeholder="Enter Seller name here!" value={seller}
                         onChange={(e) => {
                             setSeller(e.target.value);

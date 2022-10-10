@@ -2,6 +2,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { useAuth } from "./auth";
 
 
 
@@ -10,7 +11,9 @@ const Update = () => {
     const history = useHistory();
 
 
-    const { id } = useParams();
+    const { id, pid } = useParams();
+
+    const auth = useAuth();
 
     const [product, setProduct] = useState([""])
     const [title, setName] = useState("")
@@ -19,22 +22,39 @@ const Update = () => {
     const [quantity, setQuantity] = useState()
     const [type, setType] = useState("")
     const [body, setText] = useState("")
-
+    const [profile, setProfile] = useState([""])
 
     useEffect(() => {
         setTimeout(() => {
-            fetch('http://localhost:8000/products/' + id)
+            fetch('http://localhost:8000/user/' + id)
                 .then((res) => {
                     return res.json();
                 })
-                .then((data) => {
-                    setProduct(data);
-                    setName(data.title);
-                    setPrice(data.price);
-                    setSeller(data.seller);
-                    setQuantity(data.quantity);
-                    setType(data.type);
-                    setText(data.body);
+                .then((info) => {
+                    /* setProfile(info);
+                    const pro = info.products;
+                    const data = pro.find((profile) =>
+                        profile.pid == pid
+                    ) */
+                    fetch(`http://localhost:8000/products?uid=${id}&pid=${pid}`)
+                        .then((res) => {
+                            return res.json();
+                        })
+                        .then((pro) => {
+                            console.log(pro);
+                            setProduct(pro[0]);
+                            setName(pro[0].title);
+                            setPrice(pro[0].price);
+                            setSeller(pro[0].seller);
+                            setQuantity(pro[0].quantity);
+                            setType(pro[0].type);
+                            setText(pro[0].body);
+                        })
+
+
+
+                    /* setProduct(data); */
+
                 })
 
         }, 100);
@@ -52,8 +72,8 @@ const Update = () => {
 
         const newproduct = { title, body, seller, price, quantity, type };
 
-        fetch('http://localhost:8000/products/' + product.id, {
-            method: 'PUT',
+        fetch(`http://localhost:8000/products/${product.id}`, {
+            method: 'PATCH',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newproduct)
         })
@@ -61,7 +81,7 @@ const Update = () => {
 
                 alert("Product Updated!");
 
-                history.push('/');
+                history.push('/home');
 
             })
     }

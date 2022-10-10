@@ -8,43 +8,57 @@ import Footer from './Footer';
 import Update from './Update';
 import Nopage from './Nopage';
 import Live from './Live';
+import Login from './Login';
+import Register from './Register';
+import { AuthProvider } from './auth';
+import RequireAuth from './RequireAuth';
 
 
 
 function App() {
 
-
+  const confirm = false;
   return (
+    <AuthProvider>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <div className="App-content">
+            <Switch>
+              <Route exact path="/">
+                <Login />
+              </Route>
+              <Route path="/login">
+                <Login />
+              </Route>
+              <Route path="/home">
+                <RequireAuth><Home /></RequireAuth>
+              </Route>
+              <Route path="/register">
+                <Register />
+              </Route>
+              <Route path="/create">
+                <RequireAuth><Create /></RequireAuth>
+              </Route>
+              <Route exact path="/products/:id/:pid">
+                <RequireAuth><ProductDetails /></RequireAuth>
+              </Route>
+              <Route path="/user/:id/products/update/:pid">
+                <RequireAuth><Update /></RequireAuth>
+              </Route>
+              <Route path="/live">
+                <RequireAuth><Live /></RequireAuth>
+              </Route>
+              <Route path="*">
+                <Nopage />
+              </Route>
 
-    <Router>
-      <div className="App">
-        <Navbar />
-        <div className="App-content">
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/create">
-              <Create />
-            </Route>
-            <Route exact path="/products/:id">
-              <ProductDetails />
-            </Route>
-            <Route path="/products/update/:id">
-              <Update />
-            </Route>
-            <Route path="/live">
-              <Live />
-            </Route>
-            <Route path="*">
-              <Nopage />
-            </Route>
-
-          </Switch>
+            </Switch>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </Router>
+      </Router>
+    </AuthProvider>
   );
 }
 
