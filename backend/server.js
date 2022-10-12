@@ -11,12 +11,17 @@ const io = require('socket.io')(server, {
 
 
 io.on("connection", (socket) => {
-    console.log("products updated ");
+    console.log("working ");
 
 
     socket.on("send", (payload) => {
         console.log("payload is ", payload);
         io.emit("products", payload)
+    })
+
+    socket.on("notification", (message) => {
+        console.log("notification is ", message);
+        io.emit("message", message)
     })
 
 })
