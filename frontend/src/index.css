@@ -29,6 +29,7 @@
 
 }
 
+
 .navbar h1 {
   color: #b3d89c;
 }
@@ -44,6 +45,8 @@
 
 }
 
+
+
 .navbar a:hover {
   color: #D0EFB1;
 }
@@ -52,6 +55,7 @@
   .links {
     display: flex;
     flex-shrink: 2;
+    flex-wrap: nowrap;
   }
 }
 
@@ -184,6 +188,22 @@ button:hover {
   transition: 0.4s ease-in;
 }
 
+.sharebtn {
+  margin-left: 30%;
+  color: white;
+  background-color: orangered;
+  border: 1px solid yellowish;
+  padding: 7px 9px;
+  border-radius: 10%;
+  transition: 0.4s ease-in;
+}
+
+.sharebtn:hover {
+  background-color: green;
+  color: white;
+  transform: scale(1.2);
+}
+
 
 /* Footer */
 
@@ -266,4 +286,44 @@ a {
 button {
   cursor: pointer;
 
+}
+
+
+.notification {
+  background-color: rgb(173, 68, 68);
+  color: white;
+  text-decoration: none;
+  padding: 15px 4px;
+  position: relative;
+  border-radius: 44%;
+  float: right;
+}
+
+.notification:hover {
+  background: red;
+}
+
+
+.badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
+
+
+.badge2 {
+  position: absolute;
+  top: -41px;
+  right: -126px;
+  padding: 10px 10px;
+  /*  border-top-left-radius: 15%;
+  border-top-right-radius: 15%;
+  border-bottom: 2%; */
+  border-radius: 10%;
+  background: red;
+  color: white;
 }

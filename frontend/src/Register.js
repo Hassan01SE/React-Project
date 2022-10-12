@@ -4,6 +4,7 @@ import { useHistory, Link } from "react-router-dom";
 
 const Register = () => {
 
+    localStorage.clear();
     document.title = "Registration";
 
     const [name, setName] = useState('');
@@ -54,7 +55,7 @@ const Register = () => {
                     //history.push('/login');
                     setTimeout(() => {
                         history.push('/login');
-                    }, 1000)
+                    }, 2000)
                 })
         } else {
             msg.textContent = "UserName is already taken, use another user name";

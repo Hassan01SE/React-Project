@@ -101,7 +101,7 @@ const ProductDetails = () => {
                 {product && <button className='delbtn' onClick={handleDelete}>DELETE</button>}
                 <Link activeClass="active" smooth spy to={`/user/${id}/products/update/${product.pid}`}> <button id="updatebtn">UPDATE</button></Link>
 
-
+                <Link activeClass="active" smooth spy to={`/share/${product.id}`}> <button className="sharebtn">SHARE</button></Link>
 
 
             </div >

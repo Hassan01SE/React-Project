@@ -10,14 +10,14 @@ import Nopage from './Nopage';
 import Live from './Live';
 import Login from './Login';
 import Register from './Register';
-import { AuthProvider } from './auth';
+import { AuthProvider, useAuth } from './auth';
 import RequireAuth from './RequireAuth';
-
+import Share from './Share';
+import { useEffect } from 'react';
 
 
 function App() {
 
-  const confirm = false;
   return (
     <AuthProvider>
       <Router>
@@ -48,6 +48,9 @@ function App() {
               </Route>
               <Route path="/live">
                 <RequireAuth><Live /></RequireAuth>
+              </Route>
+              <Route path="/share/:id">
+                <RequireAuth><Share /></RequireAuth>
               </Route>
               <Route path="*">
                 <Nopage />

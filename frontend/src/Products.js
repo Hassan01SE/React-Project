@@ -13,7 +13,17 @@ const Products = () => {
     const [error, setError] = useState(1)
 
     const auth = useAuth();
-    const name = auth.user;
+    //const name = auth.user;
+
+    const [name, setname] = useState(() => {
+        // getting stored value
+        const saved = sessionStorage.getItem("name");
+        const initialValue = JSON.parse(saved);
+        return initialValue || auth.user;
+    });
+
+
+
 
     useEffect(() => {
         setTimeout(() => {

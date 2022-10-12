@@ -7,6 +7,8 @@ import { useAuth } from "./auth";
 
 const Login = () => {
 
+    sessionStorage.clear();
+
     document.title = "Login Page";
 
     const [name, setName] = useState('');
