@@ -35,6 +35,7 @@ const Navbar = () => {
         localStorage.clear();
         sessionStorage.clear();
         auth.logout();
+        window.location.reload(false);
     }
 
     return (
