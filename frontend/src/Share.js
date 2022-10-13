@@ -37,7 +37,9 @@ const Share = () => {
                     return res.json();
                 })
                 .then((data) => {
-                    setUser(data);
+                const filtered = data.filter((user) => user.name !== name)
+                    setUser(filtered);
+                    
                 })
 
         }, 100);
