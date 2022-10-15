@@ -110,7 +110,7 @@ const Products = () => {
 
                     {products.map(product => (
                         <div className="product-preview" key={product.pid} >
-                            <Link id="flex" to={`/products/${current.id}/${product.pid}`}>
+                            <Link id="flex" to={`/products/${current.id}/${product.id}`}>
                                 <div>
                                     <h2>{product.title}</h2>
                                     {product && <p>Sold by {product.seller}</p>} </div>
