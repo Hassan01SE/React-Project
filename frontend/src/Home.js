@@ -62,7 +62,7 @@ const Home = () => {
         else if (x.classList.contains('badge2')) {
             x.classList.replace('badge2', 'badge');
             x.textContent = count;
-        }
+        
 
     }
 
