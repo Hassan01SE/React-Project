@@ -16,7 +16,13 @@ const ProductDetails = () => {
 
     const auth = useAuth();
 
-    const name = auth.user;
+
+    const [name, setname] = useState(() => {
+        // getting stored value
+        const saved = sessionStorage.getItem("name");
+        const initialValue = JSON.parse(saved);
+        return initialValue || auth.user;
+    });
 
     document.title = "ProductDetails";
 
@@ -28,14 +34,14 @@ const ProductDetails = () => {
                 })
                 .then((data) => {
                     setUser(data);
-                    fetch(`http://localhost:8000/products?uid=${id}&pid=${pid}`)
+                    fetch(`http://localhost:8000/products/${pid}`)
                         .then((res) => {
                             return res.json();
                         })
                         .then((pro) => {
                             console.log(pro);
-                            setProduct(pro[0]);
-                            setstatus(1);
+                            setProduct(pro);
+                            //setstatus(1);
 
                         })
 
@@ -73,14 +79,14 @@ const ProductDetails = () => {
             history.push('/home');
         })
     }
-    /* 
-        useEffect(() => {
-            if (!product.title) { setstatus(0) } else { setstatus(1) }
-        }, [product.title])
-     */
+
+    useEffect(() => {
+        if (!product.title) { setstatus(0) } else { setstatus(1) }
+    }, [product.title])
 
 
-    if (status === 1) {
+
+    if (status === 1 && user.name == name && product.uid == id) {
         return (
 
 
@@ -108,6 +114,8 @@ const ProductDetails = () => {
 
         );
     }
+
+
 
     //for loading title document
     else {
