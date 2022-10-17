@@ -26,6 +26,7 @@ const Share = () => {
     const [user, setUser] = useState([""])
 
     const [product, setProduct] = useState([""])
+    const [sender, setsender] = useState([""])
 
     document.title = "Product Share";
     const socket = io.connect("http://localhost:5000");
@@ -37,9 +38,14 @@ const Share = () => {
                     return res.json();
                 })
                 .then((data) => {
-                const filtered = data.filter((user) => user.name !== name)
+                    const current = data.find((person) =>
+                        person.name === name
+                    )
+                    if (current) {
+                        setsender(current);
+                    }
+                    const filtered = data.filter((user) => user.name !== name)
                     setUser(filtered);
-                    
                 })
 
         }, 100);
@@ -77,30 +83,37 @@ const Share = () => {
     }
 
 
+    if (sender.id === product.uid) {
+        return (
+            <div className="title">
+                <h1>All Users</h1>
 
-    return (
-        <div className="title">
-            <h1>All Users</h1>
+                <p>Click on the User to share the Product: <b>{product.title}</b> </p>
 
-            <p>Click on the User to share the Product: <b>{product.title}</b> </p>
+                <div className="productlist">
 
-            <div className="productlist">
+                    {user.map(u => (
+                        <div className="product-preview" key={u.id} >
+                            <a id="flex" href="#">
+                                <div>
+                                    <h2>{u.name}</h2>
+                                </div>
 
-                {user.map(u => (
-                    <div className="product-preview" key={u.id} >
-                        <a id="flex" href="#">
-                            <div>
-                                <h2>{u.name}</h2>
-                            </div>
+                            </a>
+                            {u.name !== name && <button onClick={(e) => { handleShare(u.id, u.name) }} style={{ marginLeft: '90%' }} className="sharebtn">Share</button>}
+                        </div>
+                    ))}
 
-                        </a>
-                        {u.name !== name && <button onClick={(e) => { handleShare(u.id, u.name) }} style={{ marginLeft: '90%' }} className="sharebtn">Share</button>}
-                    </div>
-                ))}
-
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
+
+    else {
+        return (<div style={{ marginBottom: '70%' }}><h2>Product Not FOUND!</h2></div>)
+
+    }
+
 }
 
 export default Share;
