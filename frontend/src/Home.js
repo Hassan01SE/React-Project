@@ -49,7 +49,7 @@ const Home = () => {
         if (x.classList.contains('badge')) {
             x.classList.replace('badge', 'badge2');
             x.textContent = message;
-            
+
             if (x.classList.contains('badge2') && (message !== "You have no notifications")) {
                 setTimeout(() => {
                     x.addEventListener('click', window.location.reload(false))
@@ -57,14 +57,15 @@ const Home = () => {
 
             }
         }
-            
-        
+
+
         else if (x.classList.contains('badge2')) {
             x.classList.replace('badge2', 'badge');
             x.textContent = count;
-        
 
-    } }
+
+        }
+    }
 
     /* const notify = () => {
         const x = document.querySelector('#trigger');
