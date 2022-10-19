@@ -110,7 +110,26 @@ const Share = () => {
     }
 
     else {
-        return (<div style={{ marginBottom: '70%' }}><h2>Product Not FOUND!</h2></div>)
+        setTimeout(() => {
+            const display = document.querySelector('#display');
+            display.textContent = "Product not FOUND!";
+        }, 1000)
+
+        return (<div id="display" style={{ marginBottom: '70%' }}>
+            <LineWave
+                height="100"
+                width="100"
+                color="#4D7298"
+                ariaLabel="line-wave"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                firstLineColor=""
+                middleLineColor=""
+                lastLineColor=""
+            />
+        </div>);
+
 
     }
 
